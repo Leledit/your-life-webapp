@@ -1,0 +1,31 @@
+@import "../../../../../public/css/palette.scss";
+
+.containerButton {
+  width: 100%;
+  .button,
+  .linkButton {
+    width: 50%;
+    color: $light-white-900;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid $primaryColor;
+    background: $secondaryColor;
+    cursor: pointer;
+    margin-bottom: 30px;
+    &:hover {
+      background: $backgroundColor;
+    }
+  }
+  .linkButton {
+    line-height: 63px;
+    text-decoration: none;
+  }
+  @media screen and (min-width: 992px) {
+    .button {
+      width: 200px;
+    }
+  }
+}

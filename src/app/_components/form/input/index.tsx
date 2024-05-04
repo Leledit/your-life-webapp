@@ -13,7 +13,7 @@ const CustomizedTextField = styled(TextField)({
   },
   ".css-batk84-MuiInputBase-root-MuiFilledInput-root":{
     background:"rgba(255,255,255,1)",
-    border:"1px solid rgba(0,0,0,0.2)"
+    border:"1px solid rgba(0,0,0,0.2)",
   },
   ":after": {
     borderColor: "rgba(123, 192, 255, 1)",

@@ -1,36 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import styles from "./index.module.scss";
-import imgLogo from "../../../../public/images/logo.png";
 import FormInput from "@/app/_components/form/input";
 import { useState } from "react";
 import { ImensagemRequest } from "@/app/_interface/forms";
 import { handleChancheField } from "@/app/_utils/formHandling";
 import { useRouter } from "next/navigation";
-
-interface formFild {
-  email: {
-    value: string;
-    error: boolean;
-  };
-  name: {
-    value: string;
-    error: boolean;
-  };
-  password: {
-    value: string;
-    error: boolean;
-  };
-  confirmPassword: {
-    value: string;
-    error: boolean;
-  };
-}
+import { IAuthenticationRegister } from "@/app/_interface/authentication";
+import FormLink from "@/app/_components/form/link";
+import FormLoading from "@/app/_components/form/loading";
+import FormMessage from "@/app/_components/form/message";
+import Button from "@/app/_components/form/button";
+import AuthenticationContainer from "@/app/_components/authentication/container";
+import AuthenticationHeader from "@/app/_components/authentication/header";
+import AuthenticationForm from "@/app/_components/authentication/form";
+import AuthenticationCopyRight from "@/app/_components/authentication/copyRight";
 
 export default function AuthenticationRegister() {
   const router = useRouter();
 
-  const initialValueFormsFilds: formFild = {
+  const initialValueFormsFilds: IAuthenticationRegister = {
     email: {
       value: "",
       error: false,
@@ -54,21 +42,27 @@ export default function AuthenticationRegister() {
     status: 0,
     message: "",
   });
-  const [formsFilds, setFormsFilds] = useState<formFild>(
+  const [formsFilds, setFormsFilds] = useState<IAuthenticationRegister>(
     initialValueFormsFilds
   );
 
   return (
-    <div className={styles.containerRegister}>
-      <div className={styles.containerLogo}>
-        <img src={imgLogo.src} alt="" className={styles.logo} />
-      </div>
-      <div className={styles.containerForm}>
-        <h1 className={styles.title}>Registre-se</h1>
-        <h2 className={styles.subTitle}>
-          Para criar sua conta, prencha os campos abaixo.
-        </h2>
-        <form className={styles.form}>
+    <AuthenticationContainer>
+      <AuthenticationHeader />
+      <AuthenticationForm
+        title="Registre-se"
+        subTitle=" Para criar sua conta, prencha os campos abaixo."
+      >
+        <>
+          <FormInput
+            label="Nome:"
+            name="name"
+            type="text"
+            onChange={(e) => {
+              handleChancheField(e, setFormsFilds, formsFilds);
+            }}
+            error={formsFilds.name.error}
+          />
           <FormInput
             label="E-mail:"
             name="email"
@@ -78,8 +72,31 @@ export default function AuthenticationRegister() {
             }}
             error={formsFilds.email.error}
           />
-        </form>
-      </div>
-    </div>
+          <FormInput
+            label="Senha:"
+            name="password"
+            type="password"
+            onChange={(e) => {
+              handleChancheField(e, setFormsFilds, formsFilds);
+            }}
+            error={formsFilds.password.error}
+          />
+          <FormInput
+            label="Confirmar senha:"
+            name="confirmPassword"
+            type="password"
+            onChange={(e) => {
+              handleChancheField(e, setFormsFilds, formsFilds);
+            }}
+            error={formsFilds.confirmPassword.error}
+          />
+          <FormLink destiny="/authentication/login" text="Ja possui conta?" />
+          <FormLoading loading={loading} />
+          <FormMessage mensagemRequest={mensagemRequest} />
+          <Button text="Enviar" type="submit" />
+        </>
+      </AuthenticationForm>
+      <AuthenticationCopyRight/>
+    </AuthenticationContainer>
   );
 }

@@ -1,0 +1,16 @@
+@import "../../../../../public/css/palette.scss";
+.containerCopyRight{
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    .copyRight{
+        font-size: 14px;
+        color: $textColor;
+        opacity: 0.8;
+        text-align: center;
+        line-height: 20px;
+    }
+}

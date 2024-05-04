@@ -1,0 +1,25 @@
+@import "../../../../../public/css/palette.scss";
+
+.containerForm {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 80px;
+  margin-bottom: 20px;
+  .title {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: $textColor;
+    opacity: 0.8;
+    font-weight: 700;
+  }
+  .subTitle {
+    font-size: 16px;
+    line-height: 22px;
+    color: $textColor;
+    opacity: 0.8;
+    font-weight: 400;
+  }
+  .form{
+    margin-top: 40px;
+  }
+}
